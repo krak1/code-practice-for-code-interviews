@@ -1,3 +1,30 @@
+"""Google code interview Very Hard Problem:-
+
+the given are the schedule of 2 employees. They are not available between the given time in the schedule. 
+we are asked to find free times for arranging a meeting by analising their schedule. Their work time is also give.
+(i.e)The meeting should be held between their work time. 
+The length of the meeting is also given at the end.
+
+sample input:
+
+[['9:30','10:30'],['12:00','13:00'],['16:00','18:00']]   <= schedule of 1st person
+
+['9:00','20:00']      <= worktime of 1st person
+
+[['10:00','11:30'],['12:30','14:30'],['14:30','15:00'],['16:00','17:00']]
+
+['10:00','18:30']
+
+30                <= meeting length
+
+output:
+
+[['11:30','12:00'],['15:00','16:00'],['18:00','18:30']]    <= mutually available free time
+
+#Solution:-(python)
+"""
+
+
 from math import floor
 
 def compareAvailTime(l1, l2):
@@ -21,6 +48,7 @@ def compareAvailTime(l1, l2):
       j += 1
   return time
 
+
 def changeFloat(l):
     for j in range(2):
       if len(l[j]) == 4:
@@ -32,6 +60,7 @@ def changeFloat(l):
       l[j] = x + (y/100)
     return l
 
+
 def changeStr(l):
   for i in range(2):
     r =l[i] - floor(l[i])
@@ -41,6 +70,7 @@ def changeStr(l):
       x = str(floor(l[i]))+':'+str(int(r*100))
     l[i] = x
   return l
+
 
 def findTime(l,t,lim):
   time = []
@@ -54,6 +84,7 @@ def findTime(l,t,lim):
     if (i < len(l)-1) and (l[i+1][0] - l[i][1] >=lim):
       time.append([l[i][1],l[i+1][0]])
   return time
+
 
 t1 = [['9:30','10:30'],['12:00','13:00'],['16:00','18:00']]
 l1 = ['9:00','20:00']
